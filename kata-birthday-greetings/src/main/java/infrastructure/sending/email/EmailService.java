@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailService {
 	
-	public void sendBirthdayGreetingEmail(String email){
+	public void sendBirthdayGreetingEmail(String receiver, String body){
 		
 	}
 

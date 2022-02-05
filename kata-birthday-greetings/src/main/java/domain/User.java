@@ -20,4 +20,7 @@ public class User {
 	
 	private LocalDate birthDay;
 
+	public String getFullName() {
+		return firstName + " " + lastName;
+	}
 }

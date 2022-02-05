@@ -19,10 +19,13 @@ public class SendBirthdayGreetingEmailService implements SendBirthdayGreetingSer
 	@Autowired
 	private EmailService emailService;
 	
+	@Autowired
+	private BirthdayTemplateEmailService birthdayTemplateEmailService;
+	
 	
 	@Override
 	public void sendBirthdayGreeting(User user) {
-		System.out.println("Sending email to " + user.getEmail());
+		this.sendBirthdayGreetingEmail(user);
 	}
 
 	@Override
@@ -31,14 +34,12 @@ public class SendBirthdayGreetingEmailService implements SendBirthdayGreetingSer
 		List<Callable<Integer>> tasks = new ArrayList<>();
 		users.forEach(user -> {
 			tasks.add(() -> {
-				System.out.println("Sending email to "+user.getEmail() + "...");
-				emailService.sendBirthdayGreetingEmail(user.getEmail());
+				this.sendBirthdayGreetingEmail(user);
 				return 1;
 			});
 		});
 		
 		ExecutorService executorService = Executors.newFixedThreadPool(20);
-		
 		try {
 			executorService.invokeAll(tasks);
 		} catch (InterruptedException e) {
@@ -47,6 +48,14 @@ public class SendBirthdayGreetingEmailService implements SendBirthdayGreetingSer
 			executorService.shutdown();
 		}
 		
+	}
+	
+	private void sendBirthdayGreetingEmail(User user) {
+		
+		System.out.println("Sending email to " + user.getEmail() + "...");
+		
+		String body = birthdayTemplateEmailService.buildEmailText(user);
+		emailService.sendBirthdayGreetingEmail(user.getEmail(), body);
 	}
 
 }
