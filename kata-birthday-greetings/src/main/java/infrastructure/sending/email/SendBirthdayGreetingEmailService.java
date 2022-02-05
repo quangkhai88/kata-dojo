@@ -54,7 +54,7 @@ public class SendBirthdayGreetingEmailService implements SendBirthdayGreetingSer
 		
 		System.out.println("Sending email to " + user.getEmail() + "...");
 		
-		String body = birthdayTemplateEmailService.buildEmailText(user);
+		String body = birthdayTemplateEmailService.buildEmailBody(user);
 		emailService.sendBirthdayGreetingEmail(user.getEmail(), body);
 	}
 

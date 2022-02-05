@@ -4,7 +4,7 @@ import domain.User;
 
 public interface TemplateEmailService {
 	
-	public String buildEmailText(User user);
+	public String buildEmailBody(User user);
 
 	
 }

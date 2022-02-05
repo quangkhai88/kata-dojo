@@ -5,7 +5,7 @@ import domain.User;
 public class BirthdayTemplateEmailService implements TemplateEmailService{
 
 	@Override
-	public String buildEmailText(User user) {
+	public String buildEmailBody(User user) {
 		return  "Happy birthday " + user.getFullName() ;
 	}
 
