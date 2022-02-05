@@ -17,8 +17,8 @@ public class UserRepositoryImpl implements UserRepository {
 	private UserDbMapper userDbMapper;
 	
 	@Override
-	public List<User> getTodayUsers() {
-		return this.userDbRepository.findByBirthday(LocalDate.now()).stream()
+	public List<User> getUsersByBirthday(LocalDate birthday) {
+		return this.userDbRepository.findByBirthday(birthday).stream()
 				.map(this.userDbMapper::toUser).collect(Collectors.toList());
 	}
 

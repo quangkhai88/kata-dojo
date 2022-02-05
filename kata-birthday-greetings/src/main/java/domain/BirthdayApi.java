@@ -1,5 +1,6 @@
 package domain;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class BirthdayApi {
 	}
 	
 	public void sendTodayBirthdayGreeting() {
-		List<User> users = this.repository.getTodayUsers();
+		List<User> users = this.repository.getUsersByBirthday(LocalDate.now());
 		users.forEach(this::sendBirthdayGreeting);
 	}
 }
