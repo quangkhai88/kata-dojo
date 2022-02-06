@@ -6,7 +6,7 @@ public class UserDbMapper {
 	
 	
 	public User toUser(UserEntity user) {
-		return new User();
+		return new User(user.getFirstName(), user.getLastName(), user.getEmail(), user.getBirthday());
 	}
 
 }

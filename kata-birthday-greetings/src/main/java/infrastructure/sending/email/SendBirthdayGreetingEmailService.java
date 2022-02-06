@@ -15,14 +15,15 @@ import domain.User;
 @Service
 public class SendBirthdayGreetingEmailService implements SendBirthdayGreetingService{
 
-	
+	private final EmailService emailService;
+	private final BirthdayTemplateEmailService birthdayTemplateEmailService;
+
 	@Autowired
-	private EmailService emailService;
-	
-	@Autowired
-	private BirthdayTemplateEmailService birthdayTemplateEmailService;
-	
-	
+	public SendBirthdayGreetingEmailService(EmailService emailService, BirthdayTemplateEmailService birthdayTemplateEmailService){
+		this.emailService = emailService;
+		this.birthdayTemplateEmailService = birthdayTemplateEmailService;
+	}
+
 	@Override
 	public void sendBirthdayGreeting(User user) {
 		this.sendBirthdayGreetingEmail(user);
@@ -47,7 +48,6 @@ public class SendBirthdayGreetingEmailService implements SendBirthdayGreetingSer
 		} finally {
 			executorService.shutdown();
 		}
-		
 	}
 	
 	private void sendBirthdayGreetingEmail(User user) {

@@ -1,5 +1,7 @@
 package infrastructure.data.oracle;
 
+import lombok.Getter;
+
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@Getter
 public class UserEntity {
 	
     @Id
