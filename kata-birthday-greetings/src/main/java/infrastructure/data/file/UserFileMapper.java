@@ -1,7 +1,9 @@
 package infrastructure.data.file;
 
 import domain.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserFileMapper {
 	
 	public User toUser(UserLine user) {
