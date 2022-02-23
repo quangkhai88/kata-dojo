@@ -13,9 +13,9 @@ public class Request {
 
     private String name;
 
-    private int begin;
+    private int beginDate;
 
-    private int duration;
+    private int endDate;
 
     private int price;
 }

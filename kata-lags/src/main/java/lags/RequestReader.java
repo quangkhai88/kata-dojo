@@ -30,7 +30,7 @@ public class RequestReader {
             String[] arr =  line.split(DELIMITER);
             return new  Request(arr[0],
                                     Integer.parseInt(arr[1]),
-                                    Integer.parseInt(arr[2]),
+                                    Integer.parseInt(arr[2]) + Integer.parseInt(arr[1]),
                                     Integer.parseInt(arr[3]));
         } catch (Exception e) {
             return null;
